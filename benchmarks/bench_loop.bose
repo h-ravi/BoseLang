@@ -1,0 +1,16 @@
+/* BoseLang Loop & Arithmetic Benchmark */
+block auto main() {
+    start = clock()
+
+    total = 0
+    i = 1
+    loop i <= 500000 {
+        total += i
+        i += 1
+    }
+
+    end = clock()
+    elapsed_ms = (end - start) * 1000.0
+
+    out("[BoseLang] Total:", total, "| Time:", elapsed_ms, "ms")
+}

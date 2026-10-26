@@ -1,0 +1,16 @@
+/* BoseLang Recursive Fibonacci Benchmark */
+block fib(n) {
+    when n <= 1 {
+        give n
+    }
+    give fib(n - 1) + fib(n - 2)
+}
+
+block auto main() {
+    start = clock()
+    res = fib(24)
+    end = clock()
+
+    elapsed_ms = (end - start) * 1000.0
+    out("[BoseLang] fib(24):", res, "| Time:", elapsed_ms, "ms")
+}
