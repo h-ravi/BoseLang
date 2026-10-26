@@ -1,0 +1,28 @@
+/* Test 06: Shorthands, Swapping, and Chained Assignments */
+block auto main() {
+    out("=== Test 06: Shorthands & Swap ===")
+
+    /* 1. Variable Swap without temp variable */
+    a = 10
+    b = 20
+    out("Before swap: a =", a, "b =", b)
+    a, b = b, a
+    out("After swap: a =", a, "b =", b)
+
+    /* 2. Three variable rotation */
+    x = 1
+    y = 2
+    z = 3
+    x, y, z = y, z, x
+    out("Rotated: x =", x, "y =", y, "z =", z)
+
+    /* 3. Chained Assignment (x = y = z = 42) */
+    p = q = r = 42
+    out("Chained values: p =", p, "q =", q, "r =", r)
+
+    /* 4. Compound math */
+    val = 10
+    val += 5
+    val *= 2
+    out("Compound math (10 + 5) * 2 =", val)
+}

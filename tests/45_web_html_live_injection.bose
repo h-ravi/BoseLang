@@ -1,0 +1,15 @@
+/* ─── Test 45: HTML Response Live Reload Script Injection ─── */
+
+/* Server 1: live = true */
+fix server_live = web(19191, true)
+out("Live Server listening on 19191")
+
+/* Send one mock response */
+server_live.stop()
+
+/* Server 2: live = false */
+fix server_static = web(19192, false)
+out("Static Server listening on 19192")
+server_static.stop()
+
+out("=== Test 45 Setup Completed ===")

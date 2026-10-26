@@ -1,0 +1,6 @@
+/* Test 07: Error Handling Verification */
+block auto main() {
+    /* 1. Testing index 0 */
+    items = [1, 2, 3]
+    out(items[0])
+}

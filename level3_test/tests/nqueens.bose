@@ -1,0 +1,46 @@
+block is_safe(board, row, col) {
+    when row <= 1 {
+        give true
+    }
+    loop r from 1..(row - 1) {
+        c = board[r]
+        when c == col {
+            give false
+        }
+        diff_c = c - col
+        when diff_c < 0 { diff_c = -diff_c }
+        diff_r = row - r
+        when diff_r < 0 { diff_r = -diff_r }
+        when diff_c == diff_r {
+            give false
+        }
+    }
+    give true
+}
+
+block solve(board, row, n) {
+    when row > n {
+        give 1
+    }
+    count = 0
+    loop col from 1..n {
+        when is_safe(board, row, col) {
+            board[row] = col
+            count += solve(board, row + 1, n)
+        }
+    }
+    give count
+}
+
+n = 10
+board = []
+loop i from 1..(n + 1) {
+    board.add(0)
+}
+
+start = clock()
+total = solve(board, 1, n)
+end = clock()
+
+out("RESULT:", total)
+out("TIME:", (end - start) * 1000.0)

@@ -1,0 +1,5 @@
+/* Test capability restriction error enforcement */
+fix m_basic = math(basic)
+out("Basic abs works:", m_basic.abs(-10))
+/* Attempting to call sqrt on basic capability should fail */
+out(m_basic.sqrt(25))

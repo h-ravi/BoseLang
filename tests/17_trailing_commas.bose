@@ -1,0 +1,20 @@
+/* Test 17: Trailing commas in lists, maps, calls, and block definitions */
+items = [
+    10,
+    20,
+    30,
+]
+
+user = {
+    "name": "Subhash",
+    "role": "Leader",
+}
+
+block compute(x, y,) {
+    give x + y
+}
+
+result = compute(10, 20,)
+out("Result:", result)
+out("Items length:", len(items))
+out("User name:", user["name"])

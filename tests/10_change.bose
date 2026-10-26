@@ -1,0 +1,19 @@
+/* Test 10: Type Change (Roop A & Roop B) */
+block auto main() {
+    out("=== Test: Change (Roop A) ===")
+    int a = 10
+    change a to point
+    out("a after change to point:", a)
+    out("type(a):", type(a))
+    a = "now dynamic!"
+    out("a after dynamic assignment:", a)
+
+    out("=== Test: Change (Roop B) ===")
+    int b = 10
+    change b to point = 99.5
+    out("b locked to point:", b)
+    out("type(b):", type(b))
+    b = 20
+    out("b after auto point conversion:", b)
+    out("type(b):", type(b))
+}

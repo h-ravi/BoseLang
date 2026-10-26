@@ -1,0 +1,21 @@
+/* Level 6 Math Module: Capability & Security Tests */
+out("=== Testing Capabilities ===")
+
+/* 1. Category capability restriction: math(basic) */
+fix m_basic = math(basic)
+out("Basic abs:", m_basic.abs(-99))
+out("Basic clamp:", m_basic.clamp(120, 0, 100))
+
+/* 2. Specific function capability restriction: math(min, max, sqrt) */
+fix m_custom = math(min, max, sqrt)
+out("Custom min:", m_custom.min(100, 25))
+out("Custom sqrt:", m_custom.sqrt(144))
+
+/* 3. Power transfer into block function */
+block compute_bounded(m_tool, val) {
+    give m_tool.clamp(val, 0, 10)
+}
+
+out("Power transfer result:", compute_bounded(m_basic, 45))
+
+out("=== All Capability Access Tests Passed! ===")

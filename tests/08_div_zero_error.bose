@@ -1,0 +1,4 @@
+/* Test: Division by Zero Math Error */
+block auto main() {
+    out(10 / 0)
+}

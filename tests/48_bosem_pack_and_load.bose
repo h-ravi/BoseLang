@@ -1,0 +1,12 @@
+/* ─── Test 48: Level 10 Module Packaging (.bosem) & Fast Loading ─── */
+
+out("=== Test 1: Load directly via module folder path ===")
+fix kit1 = load("test_modules/math_kit", add, multiply, PI)
+out("Folder load Pi:", kit1.PI)
+out("Folder load 10 + 20 =", kit1.add(10, 20))
+
+out("=== Test 2: Load via exact .bosem file path ===")
+fix kit2 = load("test_modules/math_kit/math_kit.bosem", add, multiply)
+out("File load 5 * 6 =", kit2.multiply(5, 6))
+
+out("=== All .bosem Pack & Load Tests Succeeded! ===")

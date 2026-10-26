@@ -1,0 +1,16 @@
+/* ─── Test 45: Web Server Static Files & MIME Types ─── */
+fix app = web.serve(8083)
+out("STATIC_SERVER_READY")
+
+loop req from app {
+    out("Static Request Path:", req.path)
+    
+    when req.path == "/stop" {
+        req.send("Stopping...")
+        app.stop()
+    }
+    otherwise {
+        req.static("tests/public")
+    }
+}
+out("STATIC_SERVER_SHUTDOWN")

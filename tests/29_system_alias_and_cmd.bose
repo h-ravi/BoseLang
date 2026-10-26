@@ -1,0 +1,22 @@
+/* ─── Test 29: System Object, Aliasing & Process Execution ─── */
+
+out("=== Test 1: Direct system object ===")
+out("System Object: {system}")
+
+out("=== Test 2: Aliasing with fix cmd = system ===")
+fix cmd = system
+out("Alias cmd Object: {cmd}")
+
+out("=== Test 3: cmd.run() executing echo ===")
+echo_res = cmd.run("echo BoseLang System Engine is Active!")
+out("Result: {echo_res.trim()}")
+
+out("=== Test 4: Global run() ===")
+ver_res = run("echo Netaji Subhash Chandra Bose")
+out("Result: {ver_res.trim()}")
+
+out("=== Test 5: cmd.env() ===")
+os_env = cmd.env("OS")
+out("Environment OS: {os_env}")
+
+out("=== Level 5 System Engine Certified ===")

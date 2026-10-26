@@ -1,0 +1,2 @@
+/* Test 25: Verify helpful Hint error on missing file read */
+read("phantom_nonexistent_file.txt")

@@ -1,0 +1,38 @@
+block count_primes(n) {
+    is_prime = []
+    loop i from 1..n {
+        is_prime.add(true)
+    }
+    is_prime[1] = false
+
+    p = 2
+    loop p * p <= n {
+        when is_prime[p] {
+            i = p * p
+            loop i <= n {
+                is_prime[i] = false
+                i += p
+            }
+        }
+        p += 1
+    }
+
+    count = 0
+    loop i from 2..n {
+        when is_prime[i] {
+            count += 1
+        }
+    }
+    give count
+}
+
+
+start = clock()
+
+res = count_primes(50000)
+
+end = clock()
+
+
+out("RESULT:", res)
+out("TIME:", (end - start) * 1000.0)

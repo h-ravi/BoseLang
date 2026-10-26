@@ -1,0 +1,30 @@
+/* Test 01: BoseLang Core Types & Variables */
+block auto main() {
+    out("=== Test 01: Core Types & Arithmetic ===")
+    
+    /* 1. Types & Arithmetic */
+    a = 20
+    b = 7
+    out("a + b =", a + b)
+    out("a - b =", a - b)
+    out("a * b =", a * b)
+    out("a / b =", a / b)
+    out("a // b =", a // b)
+    out("a % b =", a % b)
+    out("2 ** 3 =", 2 ** 3)
+
+    /* 2. String Interpolation */
+    name = "Subhash"
+    age = 25
+    out("User profile: Name is {name}, Age is {age}")
+
+    /* 3. Lossless typed conversion */
+    point price = 50
+    out("Price point:", price)
+    out("Price type:", type(price))
+
+    /* 4. Null value */
+    empty = Null
+    out("Empty value:", empty)
+    out("Is empty Null?", empty == Null)
+}

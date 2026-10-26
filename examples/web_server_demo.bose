@@ -1,0 +1,58 @@
+/* ─── BoseLang Native Web Server Demo (Level 9) ───
+Zero dependencies, blazing fast, human-friendly!
+*/
+
+block auto main() {
+    port = 8080
+    fix server = web(port, true)
+    out("⚡ BoseLang Web Server running at: http://localhost:{port}")
+    out("⚡ Live reload active — edit this file and save to hot-reload automatically!")
+
+    loop req from server {
+        out("👉 [{req.method}] {req.path} from {req.ip}")
+
+        /* 1. REST API: GET /api/status */
+        when req.path == "/" and req.method == "GET" {
+            req.send("<h1>Welcome to the BoseLang Web Server Demo!sab thik position par</h1><p>Try accessing <a href='/api/status'>/api/status</a> or <a href='/api/users'>/api/users</a>.</p>")
+        }
+        again req.path == "/home" and req.method == "GET" {
+            req.file("public/index.html")
+        }
+        again req.path == "/api/status" and req.method == "GET" {
+            req.cors().json({
+                "status": "online",
+                "engine": "BoseLang Pure Rust HTTP Engine",
+                "version": "1.0.0",
+                "uptime": "active"
+            })
+        }
+
+        /* 2. REST API: POST /api/users */
+        again req.path == "/api/users" and req.method == "POST" {
+            user = req.body
+            when user == Null or user["name"] == Null {
+                req.status(400).json({ "error": "Missing 'name' field in request body" })
+            } otherwise {
+                out("✨ Saved new user:", user["name"])
+                req.status(201).json({
+                    "message": "User created successfully!",
+                    "user": user
+                })
+            }
+        }
+
+        /* 3. Query Parameter Search: /search?q=boselang */
+        again req.path == "/search" {
+            query = req.query["q"]
+            req.json({
+                "query": query,
+                "matches": ["BoseLang", "Netaji", "Subhash Chandra Bose"]
+            })
+        }
+
+        /* 4. Static Website Fallback (HTML, CSS, JS) */
+        otherwise {
+            req.static("public")
+        }
+    }
+}

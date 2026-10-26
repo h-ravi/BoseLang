@@ -1,0 +1,21 @@
+/* Level 7 Time Module Capability Security Test */
+out("=== 1. Clock Capability Only ===")
+fix t_clock = time(clock)
+out("Today via clock:", t_clock.today())
+out("Stamp via clock > 0:", t_clock.stamp() > 0)
+
+out("=== 2. Timer Capability Only ===")
+fix t_timer = time(timer)
+sw = t_timer.timer()
+sum = 0
+loop i from 1..5000 {
+    sum += i
+}
+out("Stop timer elapsed > 0:", sw.stop() > 0.0)
+
+out("=== 3. Custom Function Grants: time(today, is_leap) ===")
+fix t_custom = time(today, is_leap)
+out("Custom today:", t_custom.today())
+out("Custom is_leap 2024:", t_custom.is_leap(2024))
+
+out("=== All Capability Access Tests Passed! ===")

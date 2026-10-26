@@ -1,0 +1,31 @@
+seed = 12345
+n = 50000
+seq = []
+loop i from 1..n {
+    seed = (seed * 1103515245 + 12345) % 2147483648
+    seq.add(seed % 4)
+}
+
+start = clock()
+
+counts = {}
+loop i from 1..(n - 3) {
+    code = seq[i] * 64 + seq[i + 1] * 16 + seq[i + 2] * 4 + seq[i + 3]
+    k = "{code}"
+    cur = counts[k]
+    when cur == Null {
+        counts[k] = 1
+    } otherwise {
+        counts[k] = cur + 1
+    }
+}
+
+checksum = 0
+loop k, count from counts {
+    checksum = (checksum + count * count) % 1000000007
+}
+
+end = clock()
+
+out("RESULT:", checksum)
+out("TIME:", (end - start) * 1000.0)

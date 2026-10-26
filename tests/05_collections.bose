@@ -1,0 +1,57 @@
+/* Test 05: Collections (Lists & Maps) & 1-Based Indexing */
+block auto main() {
+    out("=== Test 05: Collections ===")
+
+    /* 1. Lists & 1-Based Indexing */
+    fruits = ["Apple", "Banana", "Mango"]
+    out("1st element:", fruits[1])
+    out("Last element:", fruits[-1])
+    out("Length of fruits:", len(fruits))
+
+    /* 2. List Update & Index Assignment */
+    fruits[1] = "Pineapple"
+    out("Updated 1st:", fruits[1])
+
+    /* 3. Slicing Shorthand (inclusive) */
+    numbers = [10, 20, 30, 40, 50]
+    sub = numbers[1..3]
+    out("Slice 1..3:", sub)
+
+    /* 4. String as Indexable Collection */
+    msg = "BoseLang"
+    out("1st letter:", msg[1])
+    out("Last letter:", msg[-1])
+    out("Slice 1..4:", msg[1..4])
+
+    /* 5. List Methods */
+    items = [1, 2]
+    items.add(3)
+    out("After add(3):", items)
+    items.remove(1)
+    out("After remove 1st:", items)
+
+    /* 6. Maps (Dictionaries) */
+    user = {
+        "name": "Subhash",
+        "age": 25,
+        "city": "Kolkata"
+    }
+
+    out("Map key read:", user["name"])
+    out("Missing key safe read:", user["unknown"])
+
+    /* 7. Map 1-Based Index (returns Pair via index / idx) */
+    out("Map 1st pair:", user[index(1)])
+    k, v = user[idx(1)]
+    out("Destructured map pair -> key:", k, "val:", v)
+
+    /* 8. Map Methods */
+    out("Map keys:", user.keys())
+    out("Map values:", user.values())
+
+    /* 9. Map Loop with two variables (k, v) */
+    out("Iterating map:")
+    loop key, val from user {
+        out("  entry ->", key, ":", val)
+    }
+}

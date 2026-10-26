@@ -1,0 +1,44 @@
+/* Test 04: Blocks (Functions), Multiple Returns, Recursion, and Auto Blocks */
+
+/* Multiple block auto: FIFO execution */
+block auto first_entry() {
+    out("=== 1. First Auto Block Started ===")
+}
+
+block auto second_entry() {
+    out("=== 2. Second Auto Block Started ===")
+    
+    /* 1. Calling function defined below (order-independent) */
+    later_func()
+
+    /* 2. Default parameters */
+    greet("Subhash")
+    greet("Guest", "Good morning")
+
+    /* 3. Multiple return values & destructuring */
+    x, y = get_coordinates()
+    out("Destructured x:", x, "y:", y)
+
+    /* 4. Recursion */
+    fact5 = factorial(5)
+    out("Factorial of 5 is:", fact5)
+}
+
+block later_func() {
+    out("Order-independent function called successfully!")
+}
+
+block greet(name, msg = "Namaste") {
+    out("{msg}, {name}!")
+}
+
+block get_coordinates() {
+    give 100, 200
+}
+
+block factorial(n) {
+    when n <= 1 {
+        give 1
+    }
+    give n * factorial(n - 1)
+}

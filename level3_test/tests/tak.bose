@@ -1,0 +1,13 @@
+block tak(x, y, z) {
+    when y < x {
+        give tak(tak(x - 1, y, z), tak(y - 1, z, x), tak(z - 1, x, y))
+    }
+    give z
+}
+
+start = clock()
+res = tak(21, 14, 7)
+end = clock()
+
+out("RESULT:", res)
+out("TIME:", (end - start) * 1000.0)

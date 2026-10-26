@@ -1,0 +1,40 @@
+/* Test 02: Conditionals, Chained Comparisons, and Membership */
+block auto main() {
+    out("=== Test 02: Conditionals & Comparisons ===")
+
+    /* 1. Chained Comparison */
+    age = 30
+    when 18 <= age <= 60 {
+        out("Age is in working bracket: 18 <= 30 <= 60 is true!")
+    }
+
+    score = 150
+    when 0 <= score <= 100 {
+        out("Score is normal")
+    } again score > 100 {
+        out("Score is bonus level: 150 > 100")
+    } otherwise {
+        out("Invalid score")
+    }
+
+    /* 2. Membership Check (from / not from) */
+    roles = ["admin", "editor", "moderator"]
+    user_role = "admin"
+
+    when user_role from roles {
+        out("Access granted: user is in allowed roles")
+    }
+
+    bad_user = "guest"
+    when bad_user not from roles {
+        out("Guest is restricted: guest is not in allowed roles")
+    }
+
+    /* 3. Logical Operators */
+    has_key = true
+    is_open = false
+
+    when has_key and not is_open {
+        out("Door is closed but we have the key!")
+    }
+}

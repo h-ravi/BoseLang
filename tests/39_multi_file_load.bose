@@ -1,0 +1,18 @@
+/* Test 39: Multi-File Module Loading via load() */
+
+fix math_tools = load("helper_math.bose")
+
+out("Module Name:", math_tools.name)
+out("PI Constant:", math_tools.PI)
+out("Version:", math_tools.VERSION)
+
+sum = math_tools.add(15, 25)
+out("Sum (15 + 25):", sum)
+
+prod = math_tools.multiply(6, 7)
+out("Multiply (6 * 7):", prod)
+
+msg = math_tools.greet("Subhash")
+out("Greet:", msg)
+
+out("ALL TESTS PASSED: Multi-File Module Loading")

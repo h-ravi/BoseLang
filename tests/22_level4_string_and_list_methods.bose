@@ -1,0 +1,103 @@
+/* Test 22: Level 4 String and Collection Built-in Methods (Clean Edition)
+   Testing .find(), .pos(), .upper(), .lower(), .title(), .trim(), .ltrim(), .rtrim(),
+   .split(), .join(), .replace(), .starts(), .ends(), .sort(), .reverse(), .pop(), .count() */
+
+out("=== 1. Find (Boolean Search) ===")
+my_text = "Netaji Subhash Chandra Bose"
+out(my_text.find("Subhash"))       /* true */
+out(my_text.find("Gandhi"))        /* false */
+
+nums = [10, 20, 30, 40]
+out(nums.find(30))                 /* true */
+out(nums.find(99))                 /* false */
+
+info = {"leader": "Bose", "year": 1942}
+out(info.find("leader"))           /* true */
+out(info.find("salary"))           /* false */
+
+out("=== 2. Pos (1-Based Position & Range) ===")
+s = "subhash"
+p1 = s.pos("b")
+out(p1)                            /* 3 (1-based int for single char) */
+out(s[p1])                         /* "b" */
+
+p2 = s.pos("bhas")
+out(p2)                            /* 3..6 (1-based range) */
+out(s[p2])                         /* "bhas" (direct slicing with Range) */
+
+p_missing = s.pos("xyz")
+out(p_missing)                     /* Null */
+
+l_pos = nums.pos(30)
+out(l_pos)                         /* 3 (1-based list index) */
+out(nums[l_pos])                   /* 30 */
+
+m_pos = info.pos("year")
+out(m_pos)                         /* 2 (1-based map entry position) */
+out(info[index(m_pos)])            /* ("year": 1942) */
+
+out("=== 3. Text Transformations (Upper, Lower, Title, Trim, Ltrim, Rtrim) ===")
+name = "subhash chandra bose"
+out(name.upper())                  /* "SUBHASH CHANDRA BOSE" */
+out(name.lower())                  /* "subhash chandra bose" */
+out(name.title())                  /* "Subhash Chandra Bose" */
+
+padded = "   Jai Hind!   "
+out(padded.trim())                 /* "Jai Hind!" */
+out(padded.ltrim())                /* "Jai Hind!   " */
+out(padded.rtrim())                /* "   Jai Hind!" */
+
+out("=== 4. Split and Join ===")
+words = "Delhi Chalo Now".split()
+out(words)                         /* ["Delhi", "Chalo", "Now"] */
+
+csv = "apple,banana,mango".split(",")
+out(csv)                           /* ["apple", "banana", "mango"] */
+
+chars = "Bose".split("")
+out(chars)                         /* ["B", "o", "s", "e"] */
+
+joined1 = csv.join(" - ")
+out(joined1)                       /* "apple - banana - mango" */
+
+joined2 = "/".join(["usr", "local", "bin"])
+out(joined2)                       /* "usr/local/bin" */
+
+out("=== 5. Replace, Starts, Ends ===")
+sentence = "Give me blood, and I will give you freedom"
+out(sentence.replace("give", "offer"))   /* replaces all case-sensitive */
+out(sentence.replace(" ", "_", 2))      /* replace with limit: 2 replacements */
+
+out(name.starts("subhash"))        /* true */
+out(name.starts("gandhi"))         /* false */
+out(name.ends("bose"))             /* true */
+
+out("=== 6. List Sort, Reverse, Pop ===")
+list1 = [40, 10, 50, 20, 30]
+list1.sort()
+out(list1)                         /* [10, 20, 30, 40, 50] */
+
+list1.reverse()
+out(list1)                         /* [50, 40, 30, 20, 10] */
+
+reversed_text = "Netaji".reverse()
+out(reversed_text)                 /* "ijateN" */
+
+last = list1.pop()
+out(last)                          /* 10 */
+out(list1)                         /* [50, 40, 30, 20] */
+
+first = list1.pop(1)
+out(first)                         /* 50 */
+out(list1)                         /* [40, 30, 20] */
+
+out("=== 7. Count ===")
+sample = [1, 2, 3, 2, 4, 2, 5]
+out(sample.count(2))               /* 3 */
+out(sample.count(99))              /* 0 */
+
+quote = "freedom freedom forever"
+out(quote.count("freedom"))        /* 2 */
+out(quote.count("e"))              /* 6 */
+
+out("SUCCESS: Level 4 Clean Methods fully verified!")

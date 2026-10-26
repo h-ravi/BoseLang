@@ -1,0 +1,36 @@
+/* ─── Test 43: Web Server Module - Basic Methods & Properties ─── */
+
+out("=== Test 1: web Module Type & Methods ===")
+out("Type of web module:", type(web))
+
+mime_html = web.mime("index.html")
+mime_css = web.mime("style.css")
+mime_js = web.mime("app.js")
+mime_json = web.mime("data.json")
+mime_png = web.mime("logo.png")
+mime_wasm = web.mime("module.wasm")
+
+out("MIME .html:", mime_html)
+out("MIME .css:", mime_css)
+out("MIME .js:", mime_js)
+out("MIME .json:", mime_json)
+out("MIME .png:", mime_png)
+out("MIME .wasm:", mime_wasm)
+
+out("=== Test 2: HTTP Status Text ===")
+out("Status 200:", web.status(200))
+out("Status 201:", web.status(201))
+out("Status 404:", web.status(404))
+out("Status 500:", web.status(500))
+
+out("=== Test 3: Web Server Binding & Lifecycle ===")
+fix app = web.serve(8081, "127.0.0.1")
+out("WebServer Type:", type(app))
+out("WebServer Port:", app.port())
+out("WebServer Host:", app.host())
+
+/* Stop server cleanly */
+stop_result = app.stop()
+out("WebServer Stopped:", stop_result)
+
+out("=== Web Server Basic Test Passed! ===")

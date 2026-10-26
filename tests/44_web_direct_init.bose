@@ -1,0 +1,52 @@
+/* ─── Test 44: Direct web(...) Initialization & Ergonomics ─── */
+
+out("=== Test 1: web(port) default host & live ===")
+fix app1 = web(19182)
+out("App1 Port:", app1.port())
+out("App1 Host:", app1.host())
+out("App1 Live:", app1.live())
+app1.stop()
+
+out("=== Test 2: web(port, live) boolean shorthand ===")
+fix app2 = web(19183, true)
+out("App2 Port:", app2.port())
+out("App2 Host:", app2.host())
+out("App2 Live:", app2.live())
+app2.stop()
+
+out("=== Test 3: web(port, \"public\") string host ===")
+fix app3 = web(19184, "public")
+out("App3 Port:", app3.port())
+out("App3 Host:", app3.host())
+out("App3 Live:", app3.live())
+app3.stop()
+
+out("=== Test 4: web(port, public, true) unquoted public keyword ===")
+fix app4 = web(19185, public, true)
+out("App4 Port:", app4.port())
+out("App4 Host:", app4.host())
+out("App4 Live:", app4.live())
+app4.stop()
+
+out("=== Test 5: web(port, private, false) unquoted private keyword ===")
+fix app5 = web(19186, private, false)
+out("App5 Port:", app5.port())
+out("App5 Host:", app5.host())
+out("App5 Live:", app5.live())
+app5.stop()
+
+out("=== Test 6: web({\"port\": 19187, \"host\": \"public\", \"live\": true}) map style ===")
+fix app6 = web({"port": 19187, "host": "public", "live": true})
+out("App6 Port:", app6.port())
+out("App6 Host:", app6.host())
+out("App6 Live:", app6.live())
+app6.stop()
+
+out("=== Test 7: web({\"live\": true, \"port\": 19188, \"host\": \"private\"}) unordered map ===")
+fix app7 = web({"live": true, "port": 19188, "host": "private"})
+out("App7 Port:", app7.port())
+out("App7 Host:", app7.host())
+out("App7 Live:", app7.live())
+app7.stop()
+
+out("=== All Web Direct Init Tests Passed! ===")

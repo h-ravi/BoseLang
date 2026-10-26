@@ -1,0 +1,2 @@
+/* Test 28: Verify OS Protection Shield blocks deletion on protected system paths */
+delete("C:\\Windows\\System32\\calc.exe")

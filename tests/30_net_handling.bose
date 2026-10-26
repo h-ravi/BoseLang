@@ -1,0 +1,30 @@
+/* ─── Test 30: Net Handling & HTTP GET / POST ─── */
+
+out("=== Test 1: Net Object ===")
+out("Net Object: {net}")
+
+out("=== Test 2: Net Aliasing with fix client = net ===")
+fix client = net
+out("Alias client Object: {client}")
+
+out("=== Test 3: HTTP GET via get() ===")
+res = get("https://jsonplaceholder.typicode.com/todos/1")
+out("HTTP GET Response:")
+out(res.trim())
+
+out("=== Test 4: Writing Network Response to File ===")
+target_file = "tests/net_output.txt"
+write(target_file, res)
+
+f_exists = exist(target_file)
+out("File exists check: {f_exists}")
+
+saved_content = read(target_file)
+out("Read from saved file:")
+out(saved_content.trim())
+
+/* Clean up test file */
+delete(target_file)
+out("Cleaned up net_output.txt successfully!")
+
+out("=== Level 5 Net Engine Certified ===")

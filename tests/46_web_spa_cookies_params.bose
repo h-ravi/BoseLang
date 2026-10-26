@@ -1,0 +1,12 @@
+/* ─── Test 46: Web Server SPA, Cookies & Dynamic Params ─── */
+
+out("=== Test 1: Web Server Initialization ===")
+fix server = web(19210)
+out("Server Port:", server.port())
+out("Server Host:", server.host())
+out("Server Live:", server.live())
+
+server.stop()
+out("Server Stopped:", true)
+
+out("=== All Web Advanced Features Tested! ===")

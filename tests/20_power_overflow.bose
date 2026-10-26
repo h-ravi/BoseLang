@@ -1,0 +1,7 @@
+/* Test 20: Power auto-promotion to Point on integer overflow */
+p = 2 ** 100
+out("2 ** 100 =", p)
+out("Type:", type(p))
+when p > 1000000000 {
+    out("Auto-promoted successfully without 64-bit truncation!")
+}

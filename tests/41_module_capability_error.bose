@@ -1,0 +1,6 @@
+/* Test 41: Calling ungranted power triggers Capability Error */
+
+fix calc = load("helper_math.bose", add)
+
+/* multiply was not granted */
+calc.multiply(5, 5)

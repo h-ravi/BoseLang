@@ -1,0 +1,9 @@
+/* ─── Test 47: Web Capabilities & Sandboxed Powers ─── */
+
+out("=== Test 1: Granted static capability ===")
+fix static_web = web(static)
+out("MIME lookup with static capability:", static_web.mime("app.js"))
+
+out("=== Test 2: Denied serve capability on static_web ===")
+/* This will fail with Security Error */
+static_web.serve(8085)

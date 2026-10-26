@@ -1,0 +1,26 @@
+block collatz_steps(n) {
+    steps = 0
+    loop n != 1 {
+        when n % 2 == 0 {
+            n = n // 2
+        } otherwise {
+            n = 3 * n + 1
+        }
+        steps += 1
+    }
+    give steps
+}
+
+
+start = clock()
+
+total_steps = 0
+loop i from 1..50000 {
+    total_steps += collatz_steps(i)
+}
+
+end = clock()
+
+
+out("RESULT:", total_steps)
+out("TIME:", (end - start) * 1000.0)

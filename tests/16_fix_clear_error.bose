@@ -1,0 +1,4 @@
+/* Test 16: fix collection immutability (.clear() protection)
+   Should fail at runtime with Fixed Error */
+fix items = [1, 2, 3]
+items.clear()

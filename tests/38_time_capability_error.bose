@@ -1,0 +1,5 @@
+/* Test capability restriction error enforcement on time module */
+fix t_cal = time(calendar)
+out("Leap 2024:", t_cal.is_leap(2024))
+/* Attempting to call sleep on calendar capability should fail */
+t_cal.sleep(1)

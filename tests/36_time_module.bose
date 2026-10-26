@@ -1,0 +1,60 @@
+/* Level 7 Time Module Comprehensive Verification Test */
+out("=== 1. Accessing Time Module ===")
+fix t = time
+
+out("=== 2. DateTime Object & Properties ===")
+now = t.now()
+out("Year:", now.year)
+out("Month num:", now.month)
+out("Month name:", now.month_name)
+out("Day (date):", now.day)
+out("Weekday (1-7):", now.weekday)
+out("Weekday name:", now.weekday_name)
+out("Hour:", now.hour)
+out("Minute:", now.minute)
+out("Time24:", now.time24)
+out("Time12:", now.time12)
+out("Is weekend:", now.is_weekend)
+
+out("=== 3. Today & Formats ===")
+out("Today:", t.today())
+out("Format DD-MM-YYYY:", now.format("DD-MM-YYYY"))
+out("Format 12h:", now.format("hh:mm A"))
+out("ISO:", now.iso())
+out("Text:", now.text())
+
+out("=== 4. Calendar Queries ===")
+out("Leap 2024:", t.is_leap(2024))
+out("Leap 2026:", t.is_leap(2026))
+out("Feb 2024 days:", t.days_in_month(2024, 2))
+out("Feb 2026 days:", t.days_in_month(2026, 2))
+out("Days in 2026:", t.days_in_year(2026))
+
+out("=== 5. Date Arithmetic ===")
+kal = now.add_days(1)
+out("Tomorrow:", kal.format("DD-MM-YYYY"))
+parso = now.sub_days(2)
+out("2 days ago:", parso.format("DD-MM-YYYY"))
+agla_mahina = now.add_months(1)
+out("Next month:", agla_mahina.format("DD-MM-YYYY"))
+
+out("=== 6. Stopwatch Timer ===")
+sw = t.timer()
+sum = 0
+loop i from 1..10000 {
+    sum += i
+}
+elapsed_time = sw.stop_timer()
+out("Timer stopped, time > 0:", elapsed_time > 0.0)
+
+out("=== 7. Bose Specials (Ago, Indian FY, Hindi) ===")
+old_post = now.sub_hours(3)
+out("Ago check:", old_post.ago())
+future_meet = now.add_days(2)
+out("Until check:", future_meet.until())
+out("Indian FY:", now.indian_fy())
+out("FY Quarter:", now.fy_quarter())
+out("Hindi Weekday:", now.weekday_name_hi)
+out("Hindi Month:", now.month_name_hi)
+
+out("=== All Time Module Tests Passed Successfully! ===")

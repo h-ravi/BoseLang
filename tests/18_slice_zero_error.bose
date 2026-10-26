@@ -1,0 +1,4 @@
+/* Test 18: Index 0 ban in slice operations
+   Should fail with Index Error */
+items = [10, 20, 30]
+sub = items[0..2]

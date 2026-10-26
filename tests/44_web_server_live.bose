@@ -1,0 +1,26 @@
+/* ─── Test 44: Web Server Live Requests & JSON API ─── */
+fix app = web.serve(8082)
+out("READY")
+
+loop req from app {
+    out("Received Method:", req.method)
+    out("Received Path:", req.path)
+    
+    when req.path == "/hello" {
+        req.send("<h1>Hello from BoseLang!</h1>")
+    }
+    again req.path == "/api/data" {
+        req.status(200).json({"status": "success", "framework": "BoseLang", "port": app.port()})
+    }
+    again req.path == "/api/echo" {
+        req.json({"echo": req.body})
+    }
+    otherwise {
+        req.status(404).send("Not Found")
+    }
+    
+    when req.query["stop"] == "true" {
+        app.stop()
+    }
+}
+out("SERVER_SHUTDOWN")

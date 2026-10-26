@@ -1,0 +1,47 @@
+/* Test 24: Level 5 Native File I/O Engine
+   Testing read(), write(), append(), create(), exist(), delete() */
+
+out("=== 1. Test exist() on non-existent file ===")
+out(exist("temp_test_nonexistent.txt"))    /* false */
+
+out("=== 2. Test create() ===")
+created = create("temp_test_empty.txt")
+out(created)                              /* true (newly created) */
+out(exist("temp_test_empty.txt"))         /* true */
+
+/* Creating again should return false (already exists) */
+created_again = create("temp_test_empty.txt")
+out(created_again)                        /* false */
+
+out("=== 3. Test write() and read() ===")
+write("temp_test_data.txt", "Give me blood, and I will give you freedom!")
+content = read("temp_test_data.txt")
+out(content)                              /* "Give me blood, and I will give you freedom!" */
+
+out("=== 4. Test append() ===")
+append("temp_test_data.txt", "\nJai Hind!")
+updated = read("temp_test_data.txt")
+out(updated)
+
+out("=== 5. Test append() on a new file (Auto-create) ===")
+append("temp_test_auto_log.txt", "Log Line 1\n")
+out(exist("temp_test_auto_log.txt"))      /* true */
+out(read("temp_test_auto_log.txt"))       /* "Log Line 1\n" */
+
+out("=== 6. Test delete() ===")
+del1 = delete("temp_test_empty.txt")
+out(del1)                                 /* true */
+out(exist("temp_test_empty.txt"))         /* false */
+
+del2 = delete("temp_test_data.txt")
+out(del2)                                 /* true */
+out(exist("temp_test_data.txt"))          /* false */
+
+del3 = delete("temp_test_auto_log.txt")
+out(del3)                                 /* true */
+out(exist("temp_test_auto_log.txt"))      /* false */
+
+del_missing = delete("temp_test_nonexistent.txt")
+out(del_missing)                          /* false (wasn't there) */
+
+out("SUCCESS: Level 5 File I/O fully verified!")

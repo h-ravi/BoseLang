@@ -1,0 +1,45 @@
+block escape(cx, cy, max_iter) {
+
+    x = 0.0
+    y = 0.0
+
+    loop i from 0..99 {
+
+        x2 = x * x
+        y2 = y * y
+
+        when x2 + y2 > 4.0 {
+            give i
+        }
+
+        y = 2.0 * x * y + cy
+        x = x2 - y2 + cx
+    }
+
+    give 100
+}
+
+
+start = clock()
+
+total = 0
+
+
+loop py from 1..300 {
+
+    cy = -1.0 + (py / 300.0) * 2.0
+
+    loop px from 1..300 {
+
+        cx = -2.0 + (px / 300.0) * 3.0
+
+        total += escape(cx, cy, 100)
+    }
+}
+
+
+end = clock()
+
+
+out("RESULT:", total)
+out("TIME:", (end - start) * 1000.0)

@@ -1,0 +1,10 @@
+/* Test 40: Selective Capabilities in load() */
+
+fix calc = load("helper_math.bose", add, PI)
+
+out("PI Constant:", calc.PI)
+
+res = calc.add(100, 250)
+out("Calc Add (100 + 250):", res)
+
+out("ALL TESTS PASSED: Selective Capabilities")

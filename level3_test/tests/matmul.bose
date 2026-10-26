@@ -1,0 +1,45 @@
+n = 60
+
+a = []
+b = []
+c = []
+
+loop i from 1..n {
+    row_a = []
+    row_b = []
+    row_c = []
+    loop j from 1..n {
+        row_a.add(((i * 17 + j * 31) % 100) + 1)
+        row_b.add(((i * 23 + j * 13) % 100) + 1)
+        row_c.add(0)
+    }
+    a.add(row_a)
+    b.add(row_b)
+    c.add(row_c)
+}
+
+start = clock()
+
+loop i from 1..n {
+    row_a = a[i]
+    row_c = c[i]
+    loop j from 1..n {
+        s = 0
+        loop k from 1..n {
+            s += row_a[k] * b[k][j]
+        }
+        row_c[j] = s
+    }
+}
+
+end = clock()
+
+total = 0
+loop i from 1..n {
+    loop j from 1..n {
+        total = (total + c[i][j]) % 1000000007
+    }
+}
+
+out("RESULT:", total)
+out("TIME:", (end - start) * 1000.0)

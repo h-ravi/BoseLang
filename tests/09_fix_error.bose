@@ -1,0 +1,5 @@
+/* Test: Fixed Immutability Error */
+block auto main() {
+    fix coords = [100, 200]
+    coords[1] = 500
+}

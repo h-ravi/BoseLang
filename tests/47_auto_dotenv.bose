@@ -1,0 +1,18 @@
+/* ─── Test 47: Automatic .env File Fallback in env() ─── */
+
+out("=== Test 1: OS Environment Variable ===")
+os_path = env("PATH")
+out("Has OS PATH:", os_path != Null)
+
+out("=== Test 2: Auto .env File Reading ===")
+secret = env("FOO_BAR_KEY")
+out("Auto .env Key:", secret)
+
+port_val = env("TEST_PORT")
+out("Auto .env Port:", port_val)
+
+out("=== Test 3: Non-existent Key ===")
+missing = env("DEFINITELY_NOT_EXIST_XYZ")
+out("Missing is Null:", missing == Null)
+
+out("=== Auto .env Tests Passed! ===")

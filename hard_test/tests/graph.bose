@@ -1,0 +1,83 @@
+block shortest(start, graph, n) {
+    dist = []
+
+    loop i from 1..100 {
+        dist.add(1000000000)
+    }
+
+    dist[start] = 0
+
+    visited = []
+
+    loop i from 1..100 {
+        visited.add(false)
+    }
+
+    loop step from 1..100 {
+
+        u = -1
+        best = 1000000000
+
+        loop i from 1..100 {
+
+            when not visited[i] and dist[i] < best {
+                best = dist[i]
+                u = i
+            }
+        }
+
+        when u == -1 {
+            stop
+        }
+
+        visited[u] = true
+
+        loop edge from graph[u] {
+
+            v = edge[1]
+            w = edge[2]
+
+            new_dist = dist[u] + w
+
+            when new_dist < dist[v] {
+                dist[v] = new_dist
+            }
+        }
+    }
+
+    give dist
+}
+
+
+n = 100
+
+graph = []
+
+loop i from 1..100 {
+    graph.add([])
+}
+
+
+loop i from 1..100 {
+
+    loop j from 1..100 {
+
+        when i != j {
+
+            weight = ((i * 37 + j * 17) % 97) + 1
+
+            graph[i].add([j, weight])
+        }
+    }
+}
+
+
+start = clock()
+
+distances = shortest(1, graph, n)
+
+end = clock()
+
+
+out("RESULT:", distances[100])
+out("TIME:", (end - start) * 1000.0)

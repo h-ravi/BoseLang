@@ -1,0 +1,22 @@
+/* Test 21: Separation of Map Integer Keys vs. Positional index(...) / idx(...) */
+
+m = {"name": "Subhash", "age": 25}
+
+/* 1. Setting and getting with integer key */
+m[1] = 500
+out("m[1] value by key:", m[1])
+
+/* 2. Reading positional pair with index(1) and alias idx(1) */
+out("Positional pair via index(1):", m[index(1)])
+out("Positional pair via idx(1):", m[idx(1)])
+
+/* 3. Positional in-place value update */
+m[index(1)] = "Netaji"
+out("After index(1) update:", m[index(1)])
+
+m[idx(2)] = 26
+out("After idx(2) update:", m[idx(2)])
+
+/* 4. Destructuring pair from index */
+k, v = m[idx(1)]
+out("Key is {k}, Value is {v}")

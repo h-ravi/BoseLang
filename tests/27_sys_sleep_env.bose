@@ -1,0 +1,16 @@
+/* Test 27: Environment Variables env() and Timing sleep() */
+
+/* 1. Test existing environment variable */
+path_val = env("PATH")
+out("Has PATH:", path_val != Null)
+
+/* 2. Test non-existent environment variable */
+missing = env("DEFINITELY_NON_EXISTENT_VAR_12345")
+out("Missing env is Null:", missing == Null)
+
+/* 3. Test sleep() */
+out("Starting pause...")
+sleep(0.05)  /* 50 ms pause */
+out("Pause completed!")
+
+out("SUCCESS: env() and sleep() verified!")

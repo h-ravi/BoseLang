@@ -1,0 +1,10 @@
+/* Math Kit Module for BoseLang */
+fix PI = 3.14159
+
+block add(a, b) {
+    give a + b
+}
+
+block multiply(a, b) {
+    give a * b
+}

@@ -1,0 +1,7 @@
+/* Test 26: CLI Arguments args() */
+a = args()
+out("CLI count:", len(a))
+when len(a) >= 2 {
+    out("First arg:", a[1])
+    out("Second arg:", a[2])
+}

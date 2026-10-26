@@ -1,0 +1,20 @@
+/* ─── Test 46: Web Server Directory Traversal Security Shield ─── */
+fix app = web.serve(8084)
+out("SECURITY_SERVER_READY")
+
+loop req from app {
+    out("Security check path:", req.path)
+    
+    when req.path == "/stop" {
+        req.send("Stopping...")
+        app.stop()
+    }
+    again req.path == "/test-file-traversal" {
+        /* Intentionally attempt dangerous path */
+        req.file("../../Cargo.toml")
+    }
+    otherwise {
+        req.static("tests/public")
+    }
+}
+out("SECURITY_SERVER_SHUTDOWN")
