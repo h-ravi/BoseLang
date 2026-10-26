@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="BoseLang Logo" width="340" />
+  <img src="assets/logo.png" alt="BoseLang Logo" width="340" />
 </p>
 
 <h1 align="center">🇮🇳 BoseLang</h1>
